@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: secure-wallet-api
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/secure_wallet}
+    username: ${DB_USERNAME:wallet_admin}
+    password: ${DB_PASSWORD:wallet_admin}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+security:
+  jwt:
+    secret: ${JWT_SECRET:SUa_Chave_Secreta_Muito_L0ng4_e_C0mpl3x4_AQUI_para_o_ambiente_de_desenvolvimento_e_testes_apenas_1234567890!}
+    expiration: ${JWT_EXPIRATION:86400000}
